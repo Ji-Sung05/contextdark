@@ -1,46 +1,16 @@
-# Getting Started with Create React App
+### Context API를 이용해서 다크 모드와 간단한 투두리스트 만들기
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> 목표
+- Context API 사용하기
+- 타입스크립트로 작성하기
+- useMemo를 사용해 성능 최적화하기
+- 커스텀 훅을 만들어서 사용하기
 
-## Available Scripts
+### 회고록
+Context API는 여러 컴포넌트가 중첩된 상태에서 값을 전달할 때 사용한다.
+Context API는 자주 업데이트할 필요가 없는 데이터에 사용하는 것이 좋다.
+예를 들어 다크 모드 같은 경우 상태와 이벤트를 발생시키는 함수가 있을 때 값이 바뀌는 것은 상태 하나인데 상태가 바뀔 때마다 이벤트를 발생시키는 ToggleBtn 컴포넌트도 리렌더링 되기 때문이다.
+이 때문에 상태와 이벤트 함수를 두 개의 컨텍스트로 분리하여 사용해야 한다.
+이런 경우가 많다면 리덕스나 다른 라이브러리를 사용하는 게 훨씬 좋다.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+따라서 Context API는 꼭 전역적인 상태를 관리하기 위해 사용된다고 생각하기보다는, Props 대신 컴포넌트 간에 값을 전달하는 또 다른 방법으로 접근하는 것이 좋다.
