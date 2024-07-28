@@ -27,6 +27,7 @@ const TodoProvider = ({children}: Props) => {
 
   const idRef = useRef<number>(3)
 
+  //useMemo를 통해 actions 함수들이 처음 렌더링 됐을 때만 생성되게 한다.
   const actions = useMemo(
     () => ({
       add(todo: string) {
